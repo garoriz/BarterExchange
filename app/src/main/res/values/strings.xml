@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">BarterExchange</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sign_up">Регистрация</string>
+    <string name="name">Имя</string>
+    <string name="write_name">Укажите имя!</string>
+    <string name="surname">Фамилия</string>
+    <string name="write_surname">Укажите фамилию!</string>
+    <string name="email">Email</string>
+    <string name="write_email">Укажите email!</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="write_right_phone_num">Введите телефон верного формата(+7хххххххххх или 8хххххххххх)!</string>
+    <string name="password">Пароль</string>
+    <string name="write_password">Введите пароль!</string>
+    <string name="confirn_password">Подтвердите пароль</string>
+    <string name="passwords_are_not_same">Пароли не совпадают</string>
+</resources>
