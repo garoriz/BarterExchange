@@ -15,4 +15,7 @@
     <string name="write_password">Введите пароль!</string>
     <string name="confirn_password">Подтвердите пароль</string>
     <string name="passwords_are_not_same">Пароли не совпадают</string>
+    <string name="delete">Удалить</string>
+    <string name="ads">Объявления</string>
+    <string name="sign_in">Войти</string>
 </resources>
