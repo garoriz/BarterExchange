@@ -1,60 +1,105 @@
 package ru.kpfu.stud.rizrgaripov.feature.signup.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
+import com.google.android.material.snackbar.Snackbar
 import ru.kpfu.stud.rizrgaripov.R
+import ru.kpfu.stud.rizrgaripov.databinding.FragmentSignUpBinding
+import ru.kpfu.stud.rizrgaripov.storage.User
+import java.util.regex.Pattern
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
+    private lateinit var binding: FragmentSignUpBinding
+    private val viewModel = SignUpViewModel()
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SignUpFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class SignUpFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentSignUpBinding.bind(view)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+        initObservers()
+
+        with(binding) {
+            btnSignUp.setOnClickListener {
+                tvNotSamePassword.visibility = View.GONE
+                tvWriteEmail.visibility = View.GONE
+                tvWriteName.visibility = View.GONE
+                tvWriteSurname.visibility = View.GONE
+                tvInvalidPhoneNumber.visibility = View.GONE
+                tvWriteFirstPassword.visibility = View.GONE
+                tvWriteSecondPassword.visibility = View.GONE
+
+                if (isRightData()) {
+                    viewModel.onAddUser(
+                        User(
+                            tilName.editText?.text.toString().trim(),
+                            tilSurname.editText?.text.toString().trim(),
+                            tilEmail.editText?.text.toString().trim(),
+                            tilPhoneNumber.editText?.text.toString().trim(),
+                            tilPassword.editText?.text.toString().trim(),
+                        )
+                    )
+                }
+            }
+        }
+    }
+    private fun initObservers() {
+        viewModel.response.observe(viewLifecycleOwner) { it ->
+            it.fold(onSuccess = {
+                view?.findNavController()?.popBackStack()
+            }, onFailure = {
+                Log.e("e", it.message.toString())
+            })
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_up, container, false)
+    private fun isRightData(): Boolean {
+        var isRight = true
+        with(binding) {
+            if (tilPassword.editText?.text.toString().isBlank()) {
+                tvWriteFirstPassword.visibility = View.VISIBLE
+                isRight = false
+            }
+            if (tilConfirmPassword.editText?.text.toString().isBlank()) {
+                tvWriteSecondPassword.visibility = View.VISIBLE
+                isRight = false
+            }
+            if (tilPassword.editText?.text.toString() !=
+                tilConfirmPassword.editText?.text.toString()) {
+                tvNotSamePassword.visibility = View.VISIBLE
+                isRight = false
+            }
+            if (tilName.editText?.text.toString().isBlank()) {
+                tvWriteName.visibility = View.VISIBLE
+                isRight = false
+            }
+            if (tilSurname.editText?.text.toString().isBlank()) {
+                tvWriteSurname.visibility = View.VISIBLE
+                isRight = false
+            }
+            if (tilEmail.editText?.text.toString().isBlank()) {
+                tvWriteEmail.visibility = View.VISIBLE
+                isRight = false
+            }
+            if (!isRightPhoneNumber()) {
+                tvInvalidPhoneNumber.visibility = View.VISIBLE
+                isRight = false
+            }
+        }
+        return isRight
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SignUpFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SignUpFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun isRightPhoneNumber(): Boolean {
+        with(binding) {
+            val p1 = Pattern.compile("[+]7[0-9]{10}")
+            val p2 = Pattern.compile("8[0-9]{10}")
+            val m1 = p1.matcher(tilPhoneNumber.editText?.text.toString().trim())
+            val m2 = p2.matcher(tilPhoneNumber.editText?.text.toString().trim())
+            return m1.matches() or m2.matches()
+        }
     }
 }

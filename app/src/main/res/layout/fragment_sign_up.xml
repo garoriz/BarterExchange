@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         tools:context=".feature.participationcheck.presentation.ParticipationCheckFragment">
 
-        <TeixtView
+        <TextView
             android:id="@+id/tv_sign_up"
             style="@style/TextViewForTheTitle"
             android:layout_marginTop="32dp"
