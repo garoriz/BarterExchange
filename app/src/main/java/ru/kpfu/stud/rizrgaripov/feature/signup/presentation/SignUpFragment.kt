@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import ru.kpfu.stud.rizrgaripov.R
@@ -44,6 +45,13 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                         )
                     )
                 }
+            }
+
+            tvSignIn.setOnClickListener {
+                view.findNavController().navigate(
+                    R.id.action_signUpFragment_to_signInFragment,
+                    null,
+                    NavOptions.Builder().setPopUpTo(R.id.mainFragment, false).build())
             }
         }
     }

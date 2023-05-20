@@ -7,13 +7,25 @@
     <fragment
         android:id="@+id/signUpFragment"
         android:name="ru.kpfu.stud.rizrgaripov.feature.signup.presentation.SignUpFragment"
-        android:label="SignUpFragment" />
+        android:label="SignUpFragment" >
+        <action
+            android:id="@+id/action_signUpFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
     <fragment
         android:id="@+id/mainFragment"
         android:name="ru.kpfu.stud.rizrgaripov.feature.main.presentation.MainFragment"
         android:label="MainFragment" >
         <action
-            android:id="@+id/action_mainFragment_to_signUpFragment"
+            android:id="@+id/action_mainFragment_to_signInFragment2"
+            app:destination="@id/signInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="ru.kpfu.stud.rizrgaripov.feature.signin.presentation.SignInFragment"
+        android:label="SignInFragment" >
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
     </fragment>
 </navigation>

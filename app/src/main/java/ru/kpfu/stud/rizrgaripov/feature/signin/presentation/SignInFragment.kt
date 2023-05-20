@@ -1,4 +1,4 @@
-package ru.kpfu.stud.rizrgaripov.feature.main.presentation
+package ru.kpfu.stud.rizrgaripov.feature.signin.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,24 +9,24 @@ import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import ru.kpfu.stud.rizrgaripov.R
 import ru.kpfu.stud.rizrgaripov.databinding.FragmentMainBinding
+import ru.kpfu.stud.rizrgaripov.databinding.FragmentSignInBinding
 import ru.kpfu.stud.rizrgaripov.storage.Storage
 
-class MainFragment : Fragment(R.layout.fragment_main) {
-    private lateinit var binding: FragmentMainBinding
+class SignInFragment : Fragment(R.layout.fragment_sign_in) {
+    private lateinit var binding: FragmentSignInBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentMainBinding.bind(view)
+        binding = FragmentSignInBinding.bind(view)
 
         //initObservers()
 
         with(binding) {
-            if (Storage.currentUser != null)
-                tvUser.text = Storage.currentUser!!.name
-
-            tvUser.setOnClickListener {
+            tvSignUp.setOnClickListener {
                 view.findNavController().navigate(
-                    R.id.action_mainFragment_to_signInFragment2,
+                    R.id.action_signInFragment_to_signUpFragment,
+                    null,
+                    NavOptions.Builder().setPopUpTo(R.id.mainFragment, false).build()
                 )
             }
         }
