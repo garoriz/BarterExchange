@@ -21,4 +21,10 @@
     <string name="no_user">Нет такого пользователя</string>
     <string name="email_for_profile">Email:</string>
     <string name="phone">Телефон:</string>
+    <string name="add_item">Добавить товар</string>
+    <string name="publish">Опубликовать</string>
+    <string name="add_photo">Добавить фото</string>
+    <string name="loading">Загрузка...</string>
+    <string name="name_of_ad">Название</string>
+    <string name="desc">Описание</string>
 </resources>

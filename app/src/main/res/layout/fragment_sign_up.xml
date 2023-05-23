@@ -107,8 +107,8 @@
             android:paddingStart="0dp"
             android:paddingEnd="0dp"
             android:text="@string/write_email"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toTopOf="@id/til_phone_number"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/til_email" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -118,9 +118,9 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:hint="@string/phone_number"
+            app:layout_constraintBottom_toTopOf="@id/tv_invalid_phone_number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/tv_invalid_phone_number"
             app:layout_constraintTop_toBottomOf="@id/tv_write_email">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -138,9 +138,9 @@
             android:paddingStart="0dp"
             android:paddingEnd="0dp"
             android:text="@string/write_right_phone_num"
+            app:layout_constraintBottom_toTopOf="@id/til_password"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_phone_number"
-            app:layout_constraintBottom_toTopOf="@id/til_password"/>
+            app:layout_constraintTop_toBottomOf="@id/til_phone_number" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_password"
@@ -149,14 +149,15 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:hint="@string/password"
+            app:layout_constraintBottom_toTopOf="@id/tv_write_first_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/tv_write_first_password"
             app:layout_constraintTop_toBottomOf="@id/tv_invalid_phone_number">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPassword"
                 android:maxLength="20" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -169,8 +170,8 @@
             android:paddingStart="0dp"
             android:paddingEnd="0dp"
             android:text="@string/write_password"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toTopOf="@id/til_confirm_password"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/til_password" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -180,14 +181,15 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:hint="@string/confirn_password"
+            app:layout_constraintBottom_toTopOf="@id/tv_write_second_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/tv_write_second_password"
             app:layout_constraintTop_toBottomOf="@id/tv_write_first_password">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPassword"
                 android:maxLength="20" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -200,8 +202,8 @@
             android:paddingStart="0dp"
             android:paddingEnd="0dp"
             android:text="@string/write_password"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toTopOf="@id/tv_not_same_password"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/til_confirm_password" />
 
         <TextView
@@ -212,8 +214,8 @@
             android:paddingStart="0dp"
             android:paddingEnd="0dp"
             android:text="@string/passwords_are_not_same"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toTopOf="@id/btn_sign_up"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_write_second_password" />
 
         <Button
@@ -223,19 +225,19 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:text="@string/sign_up"
+            app:layout_constraintBottom_toTopOf="@id/tv_sign_in"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_not_same_password"
-            app:layout_constraintBottom_toTopOf="@id/tv_sign_in"/>
+            app:layout_constraintTop_toBottomOf="@id/tv_not_same_password" />
 
         <TextView
             android:id="@+id/tv_sign_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="@string/sign_in"
             android:textColor="#6D8EF2"
             android:textSize="16sp"
-            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_sign_up" />
