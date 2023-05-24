@@ -41,6 +41,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                             tilSurname.editText?.text.toString().trim(),
                             tilEmail.editText?.text.toString().trim(),
                             tilPhoneNumber.editText?.text.toString().trim(),
+                            tilCity.editText?.text.toString().trim(),
                             tilPassword.editText?.text.toString().trim(),
                         )
                     )
@@ -95,6 +96,10 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
             }
             if (!isRightPhoneNumber()) {
                 tvInvalidPhoneNumber.visibility = View.VISIBLE
+                isRight = false
+            }
+            if (tilCity.editText?.text.toString().isBlank()) {
+                tvWriteCity.visibility = View.VISIBLE
                 isRight = false
             }
         }

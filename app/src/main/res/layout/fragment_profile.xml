@@ -1,87 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_name_surname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Ризван Гарипов"
-        android:fontFamily="sans-serif-black"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:textColor="@color/black"
-        android:textSize="32sp"
-        android:layout_margin="8dp" />
-
-    <TextView
-        android:id="@+id/tv_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/email_for_profile"
-        app:layout_constraintTop_toBottomOf="@id/tv_name_surname"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:layout_margin="8dp" />
-
-    <TextView
-        android:id="@+id/tv_email_val"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="rizvan_garipov@gmail.com"
-        app:layout_constraintTop_toBottomOf="@id/tv_name_surname"
-        app:layout_constraintStart_toEndOf="@id/tv_email"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:layout_margin="8dp" />
-
-    <TextView
-        android:id="@+id/tv_phone_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/phone"
-        app:layout_constraintTop_toBottomOf="@id/tv_email"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:layout_margin="8dp" />
-
-    <TextView
-        android:id="@+id/tv_phone_val"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="89991556744"
-        app:layout_constraintTop_toBottomOf="@id/tv_email"
-        app:layout_constraintStart_toEndOf="@id/tv_phone_number"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:layout_margin="8dp" />
-
-    <Button
-        android:id="@+id/btn_add_ad"
-        style="@style/Button"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/add_item"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_phone_number" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/ads"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginHorizontal="8dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/btn_add_ad"
-        tools:itemCount="3"
-        tools:listitem="@layout/item_ad" />
+        android:layout_height="wrap_content">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_name_surname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:fontFamily="sans-serif-black"
+            android:textColor="@color/black"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Ризван Гарипов" />
+
+        <TextView
+            android:id="@+id/tv_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/email_for_profile"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_name_surname" />
+
+        <TextView
+            android:id="@+id/tv_email_val"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@id/tv_email"
+            app:layout_constraintTop_toBottomOf="@id/tv_name_surname"
+            tools:text="rizvan_garipov@gmail.com" />
+
+        <TextView
+            android:id="@+id/tv_phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/phone"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_email" />
+
+        <TextView
+            android:id="@+id/tv_phone_val"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@id/tv_phone_number"
+            app:layout_constraintTop_toBottomOf="@id/tv_email"
+            tools:text="89991556744" />
+
+        <TextView
+            android:id="@+id/tv_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/city_for_profile"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_phone_number" />
+
+        <TextView
+            android:id="@+id/tv_city_val"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@id/tv_city"
+            app:layout_constraintTop_toBottomOf="@id/tv_phone_number"
+            tools:text="Казань" />
+
+        <Button
+            android:id="@+id/btn_add_ad"
+            style="@style/Button"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/add_item"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_city" />
+
+        <Button
+            android:id="@+id/btn_exit"
+            style="@style/Button"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/exit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_add_ad" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ads"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="32dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/btn_exit"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_ad" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

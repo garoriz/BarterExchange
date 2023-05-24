@@ -1,60 +1,67 @@
 package ru.kpfu.stud.rizrgaripov.feature.addad.presentation
 
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.navigation.findNavController
 import ru.kpfu.stud.rizrgaripov.R
+import ru.kpfu.stud.rizrgaripov.databinding.FragmentAddAdBinding
+import ru.kpfu.stud.rizrgaripov.databinding.FragmentProfileBinding
+import ru.kpfu.stud.rizrgaripov.feature.profile.presentation.ProfileViewModel
+import ru.kpfu.stud.rizrgaripov.feature.profile.presentation.adapter.AdListAdapter
+import ru.kpfu.stud.rizrgaripov.storage.Ad
+import ru.kpfu.stud.rizrgaripov.storage.Storage
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class AddAdFragment : Fragment(R.layout.fragment_add_ad) {
+    private lateinit var binding: FragmentAddAdBinding
+    private val viewModel = AddAdViewModel()
+    private val selectImageFromGalleryResult =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uriReponse: Uri? ->
+            uriReponse?.let {
+                uri = uriReponse
+                binding.tvAddedPhoto.visibility = View.VISIBLE
+            }
+        }
+    private var uri: Uri? = null
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AddAdFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class AddAdFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentAddAdBinding.bind(view)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+        initObservers()
+
+        with(binding) {
+            tvAddPhoto.setOnClickListener {
+                selectImageFromGallery()
+            }
+
+            tvPublish.setOnClickListener {
+                viewModel.onAddAd(
+                    Ad(
+                        Storage.currentUser?.email ?: "",
+                        tilName.editText?.text.toString().trim(),
+                        tilDesc.editText?.text.toString().trim(),
+                        uri
+                    )
+                )
+            }
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_ad, container, false)
+    private fun initObservers() {
+        viewModel.response.observe(viewLifecycleOwner) { it ->
+            it.fold(onSuccess = {
+                view?.findNavController()?.popBackStack()
+            }, onFailure = {
+                Log.e("e", it.message.toString())
+            })
+        }
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AddAdFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AddAdFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+    private fun selectImageFromGallery() = selectImageFromGalleryResult.launch("image/*")
 }

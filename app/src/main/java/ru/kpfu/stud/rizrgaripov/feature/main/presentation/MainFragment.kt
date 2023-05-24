@@ -25,9 +25,14 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 tvUser.text = Storage.currentUser!!.name
 
             tvUser.setOnClickListener {
-                view.findNavController().navigate(
-                    R.id.action_mainFragment_to_signInFragment2,
-                )
+                if (Storage.currentUser == null)
+                    view.findNavController().navigate(
+                        R.id.action_mainFragment_to_signInFragment2,
+                    )
+                else
+                    view.findNavController().navigate(
+                        R.id.action_mainFragment_to_profileFragment,
+                    )
             }
         }
     }

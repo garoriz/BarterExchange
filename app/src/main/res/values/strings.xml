@@ -27,4 +27,9 @@
     <string name="loading">Загрузка...</string>
     <string name="name_of_ad">Название</string>
     <string name="desc">Описание</string>
+    <string name="city">Город</string>
+    <string name="write_city">Укажите город</string>
+    <string name="city_for_profile">Город:</string>
+    <string name="photo_is_loaded">Фото загружено</string>
+    <string name="exit">Выйти</string>
 </resources>

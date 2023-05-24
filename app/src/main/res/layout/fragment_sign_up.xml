@@ -138,9 +138,38 @@
             android:paddingStart="0dp"
             android:paddingEnd="0dp"
             android:text="@string/write_right_phone_num"
-            app:layout_constraintBottom_toTopOf="@id/til_password"
+            app:layout_constraintBottom_toTopOf="@id/til_city"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/til_phone_number" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_city"
+            style="@style/TextInputLayout"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/city"
+            app:layout_constraintBottom_toTopOf="@id/tv_write_city"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_invalid_phone_number">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_write_city"
+            style="@style/TextViewError"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            android:text="@string/write_city"
+            app:layout_constraintBottom_toTopOf="@id/til_password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_city" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_password"
@@ -152,7 +181,7 @@
             app:layout_constraintBottom_toTopOf="@id/tv_write_first_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_invalid_phone_number">
+            app:layout_constraintTop_toBottomOf="@id/tv_write_city">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"

@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_mainFragment_to_signInFragment2"
             app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -28,4 +31,16 @@
             android:id="@+id/action_signInFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="ru.kpfu.stud.rizrgaripov.feature.profile.presentation.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_addAdFragment"
+            app:destination="@id/addAdFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAdFragment"
+        android:name="ru.kpfu.stud.rizrgaripov.feature.addad.presentation.AddAdFragment"
+        android:label="AddAdFragment" />
 </navigation>
