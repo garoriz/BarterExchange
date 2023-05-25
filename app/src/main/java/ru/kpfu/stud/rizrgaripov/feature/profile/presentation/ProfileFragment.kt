@@ -3,6 +3,7 @@ package ru.kpfu.stud.rizrgaripov.feature.profile.presentation
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -11,6 +12,8 @@ import ru.kpfu.stud.rizrgaripov.R
 import ru.kpfu.stud.rizrgaripov.databinding.FragmentProfileBinding
 import ru.kpfu.stud.rizrgaripov.feature.profile.presentation.adapter.AdListAdapter
 import ru.kpfu.stud.rizrgaripov.storage.Storage
+
+private const val ARG_NAME = "name"
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private lateinit var binding: FragmentProfileBinding
@@ -43,7 +46,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         viewModel.response.observe(viewLifecycleOwner) { it ->
             it.fold(onSuccess = {
                 adListAdapter = AdListAdapter { clickedAd ->
-                    //getInfoAboutCity(clickedCity)
+                    view?.findNavController()?.navigate(
+                        R.id.action_profileFragment_to_adFragment,
+                        bundleOf(ARG_NAME to clickedAd)
+                    )
                 }
 
                 val decorator = DividerItemDecoration(requireContext(), RecyclerView.VERTICAL)

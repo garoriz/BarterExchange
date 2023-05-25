@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_mainFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_adFragment"
+            app:destination="@id/adFragment" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -38,9 +41,16 @@
         <action
             android:id="@+id/action_profileFragment_to_addAdFragment"
             app:destination="@id/addAdFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_adFragment"
+            app:destination="@id/adFragment" />
     </fragment>
     <fragment
         android:id="@+id/addAdFragment"
         android:name="ru.kpfu.stud.rizrgaripov.feature.addad.presentation.AddAdFragment"
         android:label="AddAdFragment" />
+    <fragment
+        android:id="@+id/adFragment"
+        android:name="ru.kpfu.stud.rizrgaripov.feature.ad.presentation.AdFragment"
+        android:label="AdFragment" />
 </navigation>

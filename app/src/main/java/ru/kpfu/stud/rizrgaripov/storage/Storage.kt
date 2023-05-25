@@ -15,6 +15,13 @@ object Storage {
         users = users + listOf(user)
     }
 
+    fun getUser(email: String): User? {
+        for (user in users)
+            if (user.email == email)
+                return user
+        return null
+    }
+
     var ads: List<Ad> = mutableListOf(Ad(
         "rizvan_garipov@gmail.com",
         "Кроссовки",
@@ -48,7 +55,33 @@ object Storage {
         return result
     }
 
+    fun getAdsByName(name: String): List<Ad> {
+        val result = mutableListOf<Ad>()
+        for (ad in ads) {
+            if (ad.name.contains(name))
+                result.add(ad)
+        }
+        return result
+    }
+
     var currentUser: User? = null
+
+    fun getAd(name: String): Ad? {
+        for (ad in ads) {
+            if (ad.name == name)
+                return ad
+        }
+        return null
+    }
+
+    fun deleteAd(name: String) {
+        val result = mutableListOf<Ad>()
+        for (ad in ads) {
+            if (ad.name != name)
+                result.add(ad)
+        }
+        ads = result
+    }
 
     fun signIn(email: String, password: String): Boolean {
         for (user in users)
